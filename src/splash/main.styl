@@ -1,0 +1,22 @@
+@import 'archer'
+
+normalize()
+
+// 隐藏主容器
+.hide-wrapper
+    absolute: left -5000px, top -5000px
+    visilibity: hidden
+
+// 初始屏幕
+.splash
+    absolute: left, right, top, bottom
+    overflow: hidden
+    background: #F9F9F9
+    .logo
+        absolute: top 50%, left 50%
+        hide-text()
+        width: 240px
+        height: 270px
+        margin-left: -(@width / 2)
+        margin-top: -(@height / 2) - 30px
+        retina-image: './img/splash-logo.png' @width @height
