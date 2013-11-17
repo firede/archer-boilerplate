@@ -48,6 +48,13 @@ exports.getLocations = function () {
                 stylus( archerConfig )
             ]
         },
+        {
+            location: '*.html',
+            handler: [
+                file(),
+                livereload()
+            ]
+        },
         { 
             location: /^.*$/, 
             handler: [
