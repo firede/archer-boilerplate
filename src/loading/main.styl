@@ -43,3 +43,49 @@ rotate-eye(_selector, _width, _bg_color, _in_color, _out_color)
             animation: _out_frames 1s linear infinite
 
 rotate-eye('.rotate-eyes', 60px, #CCC, #999, #666)
+
+tai-chi(_width, _inc_width, _border_width, _yin_color, _yang_color)
+    _inc_circular_size = (_width / 2) - _border_width
+    _inc_border_width = ((_inc_circular_size - _inc_width) / 2)
+    box-sizing: border-box
+    display: block
+    width: _width
+    height: _width
+    background: _yang_color
+    border-color: _yin_color
+    border-style: solid
+    border-width: _border_width _border_width (_width / 2) _border_width
+    border-radius: 100%
+    position: relative
+    &:before
+        box-sizing: border-box
+        content: ""
+        position: absolute
+        top: 50%
+        left: 0
+        background: _yang_color
+        border: _inc_border_width solid _yin_color
+        border-radius: 100%
+        width: _inc_circular_size
+        height: _inc_circular_size
+    &:after
+        box-sizing: border-box
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        background: _yin_color
+        border: _inc_border_width solid _yang_color
+        border-radius:100%
+        width: _inc_circular_size
+        height: _inc_circular_size
+
+@keyframes _tai_chi
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+
+.tai-chi
+    animation: _tai_chi 1s linear infinite
+    tai-chi(50px, 8px, 2px, black, white)
