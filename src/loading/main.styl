@@ -1,0 +1,45 @@
+@import 'archer'
+
+normalize()
+
+rotate-eye(_selector, _width, _bg_color, _in_color, _out_color)
+    _in_frames = _rotate_eye + '_in'
+    _out_frames = _rotate_eye + '_out'
+    @keyframes _in_frames
+        0%
+            transform: rotate(0deg)
+        100%
+            transform: rotate(360deg)
+    @keyframes _out_frames
+        0%
+            border-width: (_width / 2) 0
+            transform: rotate(0deg)
+        50%
+            border-width: (_width / 10) 0
+        100%
+            border-width: (_width / 2) 0
+            transform: rotate(360deg)
+    {_selector}
+        display: block
+        size: _width
+        border-radius: (_width / 2)
+        background-color: _bg_color
+        &:before
+        &:after
+            display: block
+            position: absolute
+            box-sizing: border-box
+            content: ' '
+            font-size: 0
+            size: _width
+            border-radius: (_width / 2)
+            border-style: solid
+        &:before
+            border-width: 0 (_width / 4)
+            border-color: _in_color
+            animation: _in_frames 1s linear infinite
+        &:after
+            border-color: _out_color
+            animation: _out_frames 1s linear infinite
+
+rotate-eye('.rotate-eyes', 60px, #CCC, #999, #666)
